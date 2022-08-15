@@ -54,7 +54,7 @@
 <template>
   <div class="w-screen h-screen bg-gray-100">
     <div class="p-4 max-w-xl mx-auto">
-      <h1 class="text-gray-800 text-2xl font-bold my-4">Bem-vindo(a), <input class="bg-transparent outline-none text-sky-600 border-0 focus:ring-0 p-0 text-2xl transition-all ease-out" type="text" placeholder="Your Name" v-model="name"></h1>
+      <h1 class="text-gray-800 text-2xl font-bold my-4">Bem-vindo(a), <input class="bg-transparent outline-none text-sky-600 border-0 focus:ring-0 p-0 text-2xl transition-all ease-out" type="text" placeholder="Escreva seu nome" v-model="name"></h1>
     
       <h2 class="text-gray-500 mt-8">CRIAR UMA NOVA TAREFA</h2>
       <form @submit.prevent="addTodo()">
@@ -96,11 +96,11 @@
               <input type="checkbox" :class="`form-checkbox ${todo.category == 'Business' ? 'text-sky-600 focus:ring-sky-600' : 'text-pink-600 focus:ring-pink-600'}`" name="done" v-model="todo.done">
               <div class="flex flex-col ml-6 ">
                               <input type="text" :class="`p-0 border-0 text-gray-800 focus:ring-0 ${todo.done ? 'text-gray-500 line-through' : ''}`" v-model="todo.content">
-                              <small :class="`${todo.deadline >= today ? 'text-red-500 animate-pulse' : 'text-gray-800'}`">Data limite: {{todo.deadline ? moment(todo.deadline).format('DD/MM/YY') : 'N/A'}}</small>
+                              <small :class="`${todo.deadline <= today ? 'text-red-500 animate-pulse' : 'text-gray-800'}`">Até dia: {{todo.deadline ? moment(todo.deadline).format('DD/MM/YY') : 'N/A'}}</small>
 
               </div>
             </div>
-            <button class="bg-transparent text-red-600 text-sm hover:text-white ring-red-500 hover:bg-red-600 transition-all ease-out px-4 py-2 rounded hover:shadow font-bold text-white" @click="removeTodo(todo)"><i class="fa fa-trash"></i></button>
+            <button class="bg-transparent text-red-600 text-sm hover:text-white ring-red-500 hover:bg-red-600 transition-all ease-out px-4 py-2 rounded hover:shadow font-bold" @click="removeTodo(todo)"><i class="fa fa-trash"></i></button>
           </div>
         </div>
       </div>
